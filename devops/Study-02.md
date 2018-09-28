@@ -20,6 +20,8 @@ end
 
 ```
 vagrant up 
+
+C:\Program Files\Oracle\VirtualBox\VirtualBox.exe
 ```
 
 ## vm 에 접속해서 도커 설치하기 
