@@ -31,6 +31,8 @@ sh get-docker.sh
 
 sudo usermod -aG docker vagrant
 
+sudo systemctl enable docker #도커 재시작시 자동 
+
 sudo systemctl start docker #도커 데몬 실행
 
 sudo docker ps -a # 도커프로세스가 돌고 
