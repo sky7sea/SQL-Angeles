@@ -6,10 +6,17 @@
 
 ## vagrant로 가상머신에 centos 7 설치
 ```bash
+# macos
+mkdir -p ~/Desktop/GitHub/SQL-Angeles/devops/vm
 cd ~/Desktop/GitHub/SQL-Angeles/devops/vm
+
+# windows
+mkdir -p ~\Desktop\SQL-Angeles\devops\vm
+cd ~\Desktop\SQL-Angeles\devops\vm
+
 vagrant init centos/7 --minimal
 
-cat Vagrantfile
+code Vagrantfile
 ```
 
 ```
@@ -21,7 +28,7 @@ end
 ```
 vagrant up 
 
-C:\Program Files\Oracle\VirtualBox\VirtualBox.exe
+"C:\Program Files\Oracle\VirtualBox\VirtualBox.exe"
 ```
 
 ## vm 에 접속해서 도커 설치하기 
