@@ -1,4 +1,4 @@
-# devops
+# devops - 02
 
 ## virtual box install
 
@@ -21,4 +21,14 @@ end
 ```
 vagrant up 
 ```
+
+## vm 에 접속해서 도커 설치하기 
+```
+vagrant ssh 
+
+curl -fsSL get.docker.com -o get-docker.sh
+sh get-docker.sh
+```
+
+
 
