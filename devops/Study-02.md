@@ -11,7 +11,7 @@ mkdir -p ~/Desktop/GitHub/SQL-Angeles/devops/vm
 cd ~/Desktop/GitHub/SQL-Angeles/devops/vm
 
 # windows
-mkdir -p ~\Desktop\SQL-Angeles\devops\vm
+mkdir -p \Desktop\SQL-Angeles\devops\vm
 cd ~\Desktop\SQL-Angeles\devops\vm
 
 vagrant init centos/7 --minimal
@@ -46,9 +46,21 @@ sudo systemctl start docker #도커 데몬 실행
 
 sudo docker ps -a # 도커프로세스가 돌고 
 
-sudo service docker start # docker 재부팅시 자동 
+sudo service docker start # docker 재부팅시 자동
+
+sudo reboot # 재부팅
 
 ```
+
+재부팅후 docker daemon이 돌고 있는지 확인하자.
+
+```
+vagrant ssh 
+docker ps -a 
+```
+
+잘 동작한다.
+
 
 
 
