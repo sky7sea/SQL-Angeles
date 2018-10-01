@@ -5,6 +5,7 @@
 ```bash
 vagrant ssh
 sudo yum install -y net-tools
+systemctl disable firewalld
 ```
 
 ## docker-compose install
@@ -49,6 +50,10 @@ web:
 
 cd /data/docker/gitlab
 docker-compose up -d
+
+ifconfig 
+
+10.0.2.15
 
 ## 잘 안되면 다음 시도
 ```
