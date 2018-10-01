@@ -93,7 +93,33 @@ docker logs -f gitlab_web_1
 ## after gitlab install snapshot
 ```
 vagrant snapshot save after-gitlab
+vagrant snapshot list
 ```
+
+## 회원가입 취소 
+
+초기 화면에서 회원가입이 있으면 회사 내부만 쓰려고 하던 목적에 맞지 않는다. 없애보자.
+
+http://gitlab.xgridcolo.com/admin/application_settings
+로그인 » admin area » Sign-up restrictions » Sign-up enabled 을 off하면된다.
+
+## 유저 추가
+http://gitlab.xgridcolo.com/admin/users/new 에서 유저를 추가한다. 그리고 유저 리스트로 가면 설정버튼이 보인다.
+
+설정버튼을 눌러서 들어가면 비밀번호를 세팅할수 있다.
+
+이제 사용자에게 알려줘서 접속하라고 하면된다.
+
+## 깃랩 사용법 
+
+### 깃허브 데이크탑 어플리케이션 설치 
+
+clone 
+
+commit 
+
+
+
 
 
 ## 깃랩 활동에 따른 이메일 받기
@@ -130,22 +156,6 @@ gitlab_rails['smtp_user_name'] = "postmaster@mg.gitlab.com"
 gitlab_rails['smtp_password'] = "XXXXXXX"
 gitlab_rails['smtp_domain'] = "mg.gitlab.com"
 ```
-
-## 회원가입 취소 
-
-초기 화면에서 회원가입이 있으면 회사 내부만 쓰려고 하던 목적에 맞지 않는다. 없애보자.
-
-http://gitlab.xgridcolo.com/admin/application_settings
-로그인 » admin area » Sign-up restrictions » Sign-up enabled 을 off하면된다.
-
-## 유저 추가
-http://gitlab.xgridcolo.com/admin/users/new 에서 유저를 추가한다. 그리고 유저 리스트로 가면 설정버튼이 보인다.
-
-설정버튼을 눌러서 들어가면 비밀번호를 세팅할수 있다.
-
-이제 사용자에게 알려줘서 접속하라고 하면된다.
-
-## 깃 랩 사용법 
 
 
 ## 실제 www서버를 만들어보자. 
