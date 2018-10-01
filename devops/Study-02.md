@@ -31,8 +31,9 @@ vagrant up
 "C:\Program Files\Oracle\VirtualBox\VirtualBox.exe"
 ```
 
-## vm 에 접속해서 도커 설치하기 
-```
+## vm 에 접속해서 도커 설치하기
+
+```bash
 vagrant ssh 
 
 curl -fsSL get.docker.com -o get-docker.sh
@@ -42,12 +43,10 @@ sudo usermod -aG docker vagrant
 
 sudo systemctl enable docker #도커 재시작시 자동 
 
-sudo systemctl start docker #도커 데몬 실행
-
-sudo docker ps -a # 도커프로세스가 돌고 
-
 sudo reboot # 재부팅
 
+#sudo systemctl start docker #도커 데몬 실행
+#sudo docker ps -a # 도커프로세스가 돌고 
 ```
 
 재부팅후 docker daemon이 돌고 있는지 확인하자.
