@@ -110,9 +110,14 @@ http://gitlab.xgridcolo.com/admin/users/new 에서 유저를 추가한다. 그�
 
 이제 사용자에게 알려줘서 접속하라고 하면된다.
 
+## 깃허브 데이크탑 어플리케이션 설치 
+* <https://desktop.github.com>
+
+download and install 
+
 ## 깃랩 사용법 
 
-### 깃허브 데이크탑 어플리케이션 설치 
+
 
 clone 
 
