@@ -72,13 +72,11 @@ web:
     - '/srv/gitlab/logs:/var/log/gitlab'
     - '/srv/gitlab/data:/var/opt/gitlab'
 ```
-
+```
 cd /data/docker/gitlab
+
 docker-compose up -d
-
-ifconfig 
-
-10.0.2.15
+```
 
 ## 잘 안되면 다음 시도
 ```
