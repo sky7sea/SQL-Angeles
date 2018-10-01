@@ -57,10 +57,10 @@ vi docker-compose.yml
 web:
   image: 'gitlab/gitlab-ce:latest'
   restart: always
-  hostname: 'gitlab.xgridcolo.com'
+  hostname: 'localhost'
   environment:
     GITLAB_OMNIBUS_CONFIG: |
-      external_url 'http://gitlab.xgridcolo.com'
+      external_url 'http://localhost:8080'
       # Add any other gitlab.rb configuration here, each on its own line
       gitlab_rails['gitlab_shell_ssh_port'] = 30022
   ports:
@@ -112,8 +112,10 @@ http://gitlab.xgridcolo.com/admin/users/new 에서 유저를 추가한다. 그�
 
 ## 깃허브 데이크탑 어플리케이션 설치 
 * <https://desktop.github.com>
-
+vag 
 download and install 
+
+
 
 ## 깃랩 사용법 
 
