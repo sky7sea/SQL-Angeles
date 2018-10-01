@@ -72,9 +72,9 @@ web:
     - '/srv/gitlab/logs:/var/log/gitlab'
     - '/srv/gitlab/data:/var/opt/gitlab'
 ```
+
 ```
 cd /data/docker/gitlab
-
 docker-compose up -d
 ```
 
@@ -84,6 +84,11 @@ docker exec gitlab_web_1 update-permissions
 docker restart gitlab_web_1
 docker logs -f gitlab_web_1
 ```
+
+## gitlab webpage 확인
+
+<http://localhost:8080>
+
 
 
 ## 깃랩 활동에 따른 이메일 받기
