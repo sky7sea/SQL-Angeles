@@ -90,6 +90,11 @@ docker logs -f gitlab_web_1
 <http://localhost:8080>
 
 
+## after gitlab install snapshot
+```
+vagrant snapshot save init
+```
+
 
 ## 깃랩 활동에 따른 이메일 받기
 
