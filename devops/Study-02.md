@@ -46,8 +46,6 @@ sudo systemctl start docker #도커 데몬 실행
 
 sudo docker ps -a # 도커프로세스가 돌고 
 
-sudo service docker start # docker 재부팅시 자동
-
 sudo reboot # 재부팅
 
 ```
