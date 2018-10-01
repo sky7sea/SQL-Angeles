@@ -46,7 +46,7 @@ docker-compose -h
 참고 https://docs.gitlab.com/omnibus/docker/
 
 ```bash
-sudo mkdir /data/docker/gitlab
+sudo mkdir -p /data/docker/gitlab
 sudo chown -R vagrant:vagrant /data
 cd /data/docker/gitlab
 vi docker-compose.yml
