@@ -5,8 +5,23 @@
 ```bash
 vagrant ssh
 sudo yum install -y net-tools
-systemctl disable firewalld
+sudo systemctl disable firewalld
 ```
+
+## 기존 내용 snapshot
+```
+vagrant snapshot save init
+```
+
+
+## vagrant 설정 변경
+```
+vagrant snapshot save
+
+code C:\SQL-Angeles\devops\vm\Vagrantfile
+```
+
+
 
 ## docker-compose install
 ```
