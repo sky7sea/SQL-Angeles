@@ -92,7 +92,7 @@ docker logs -f gitlab_web_1
 
 ## after gitlab install snapshot
 ```
-vagrant snapshot save init
+vagrant snapshot save after-gitlab
 ```
 
 
@@ -144,6 +144,9 @@ http://gitlab.xgridcolo.com/admin/users/new 에서 유저를 추가한다. 그�
 설정버튼을 눌러서 들어가면 비밀번호를 세팅할수 있다.
 
 이제 사용자에게 알려줘서 접속하라고 하면된다.
+
+## 깃 랩 사용법 
+
 
 ## 실제 www서버를 만들어보자. 
 
