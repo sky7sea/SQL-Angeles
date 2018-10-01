@@ -16,9 +16,19 @@ vagrant snapshot save init
 
 ## vagrant 설정 변경
 ```
-vagrant snapshot save
-
 code C:\SQL-Angeles\devops\vm\Vagrantfile
+```
+
+```
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "4048"]
+    vb.customize ["modifyvm", :id, "--cpus", "2"]
+    vb.customize ["modifyvm", :id, "--ioapic", "on"]
+  end  
+end
 ```
 
 
