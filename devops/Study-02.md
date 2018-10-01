@@ -11,8 +11,8 @@ mkdir -p ~/Desktop/GitHub/SQL-Angeles/devops/vm
 cd ~/Desktop/GitHub/SQL-Angeles/devops/vm
 
 # windows
-mkdir -p \Desktop\SQL-Angeles\devops\vm
-cd ~\Desktop\SQL-Angeles\devops\vm
+mkdir -p c:\SQL-Angeles\devops\vm
+cd c:\SQL-Angeles\devops\vm
 
 vagrant init centos/7 --minimal
 
