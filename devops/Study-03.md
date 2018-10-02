@@ -1,21 +1,27 @@
 # devops - 03
 
-## 가상 머신에 접속해서 기본 패키지 설치하자
+## virtual box extension pack install
 
-```bash
-vagrant ssh
-sudo yum install -y net-tools
-sudo systemctl disable firewalld
+http://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack
+
+다운로드후 더블클릭.
+
+## vagrant virtualbox plugin install
+```
+vagrant up
+vagrant plugin install vagrant-vbguest
+vagrant halt
+vagrant up 
 ```
 
 ## 기존 내용 snapshot
-```
+```bash
 vagrant snapshot save init
 ```
 
 
 ## vagrant 설정 변경
-```
+```bash
 code C:\SQL-Angeles\devops\vm\Vagrantfile
 ```
 
@@ -46,6 +52,7 @@ docker-compose -h
 참고 https://docs.gitlab.com/omnibus/docker/
 
 ```bash
+vagrant ssh 
 sudo mkdir -p /data/docker/gitlab
 sudo chown -R vagrant:vagrant /data
 cd /data/docker/gitlab

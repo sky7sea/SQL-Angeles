@@ -25,10 +25,9 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-```
-vagrant up 
-
-"C:\Program Files\Oracle\VirtualBox\VirtualBox.exe"
+```bash
+vagrant up
+vagrant plugin install vagrant-vbguest
 ```
 
 ## vm 에 접속해서 도커 설치하기
