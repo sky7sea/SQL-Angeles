@@ -1,8 +1,11 @@
 # devops - 03
 
+## 깃허브 데이크탑 어플리케이션 설치 
+* <https://desktop.github.com> download and install 
+
 ## virtual box extension pack install
 
-http://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack
+<http://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack>
 
 다운로드후 더블클릭.
 
@@ -18,7 +21,6 @@ vagrant up
 ```bash
 vagrant snapshot save init
 ```
-
 
 ## vagrant 설정 변경
 ```bash
@@ -67,7 +69,7 @@ web:
   hostname: 'localhost'
   environment:
     GITLAB_OMNIBUS_CONFIG: |
-      external_url 'http://localhost:8080'
+      external_url 'http://localhost'
       # Add any other gitlab.rb configuration here, each on its own line
       gitlab_rails['gitlab_shell_ssh_port'] = 30022
   ports:
@@ -117,73 +119,34 @@ http://gitlab.xgridcolo.com/admin/users/new 에서 유저를 추가한다. 그�
 
 이제 사용자에게 알려줘서 접속하라고 하면된다.
 
-## 깃허브 데이크탑 어플리케이션 설치 
-* <https://desktop.github.com>
-vag 
-download and install 
 
 
+## email notification 
+* <https://teamsmiley.github.io/2018/09/06/docker-gitlab/> 여기 참고
 
 ## 깃랩 사용법 
 
+## generate ssh key 
 
+## add ssh key to gitlab
 
-clone 
+## git clone terminal
 
-commit 
+## change code 
 
+## git push - terminal
 
+## github desktop application
 
+## add local repository
 
+## change code 
 
-## 깃랩 활동에 따른 이메일 받기
+## commit and push 
 
-### mailgun 서비스 가입 및 설정
+--------------------------
 
-https://www.mailgun.com/ 에 회원가입을 한다.
-
-https://app.mailgun.com/app/domains 에서 Add New Domain 을 누른다.
-
-https://app.mailgun.com/app/domains 에서 방금 만든 도메인을 누른다.
-
-Domain Verification & DNS 를 보면 두개의 txt 를 도메인 dns에 추가해야한다고 나온다 추가하자.
-
-mx레코드는 이메일을 받을때 사용하는것이므로 하지 않아도 된다.
-
-다 적용을 햇으면 check dns record now 버튼을 누르자. dns가 업데이트가 되므로 시간이 좀 걸리는 수도 있다. 실패하면 잠시후에 다시 해본다.
-
-체크가 되면 빨간색 에러 마크가 초록색으로 바뀐다.
-
-이제 같은 페이지에 제일 상단 Domain Information 가보자.
-
-여기에 보면 이메일을 보낼때 필요한 정보가 다 있다. 그 정보를 깃랩 설정에 적어주면 된다.
-
-### 깃랩에서 설정 하자. 
-
-```
-gitlab_rails['smtp_enable'] = true
-gitlab_rails['smtp_address'] = "smtp.mailgun.org"
-gitlab_rails['smtp_port'] = 587
-gitlab_rails['smtp_authentication'] = "plain"
-gitlab_rails['smtp_enable_starttls_auto'] = true
-gitlab_rails['smtp_user_name'] = "postmaster@mg.gitlab.com"
-gitlab_rails['smtp_password'] = "XXXXXXX"
-gitlab_rails['smtp_domain'] = "mg.gitlab.com"
-```
-
-
-## 실제 www서버를 만들어보자. 
-
-기기에 소스코드를 넣어보자. 
-
-## 이제 소스코드를 커밋하자. 
-
-간단히 github client를 받자. 
-
-## 변경 및 커밋 
-
-
-git에서 브랜치 관리법
+## git에서 브랜치 관리법
 
 
 ## git flow설명 가능?
@@ -194,14 +157,18 @@ git에서 브랜치 관리법
 
 docker pull jenkins/jenkins:lts
 
-
-
-
+## build후 server에 자동으로 푸시 (msbuild ms deploy 사용)
 
 ## docker
+
 ### docker 기본
+
 ### docker file
+
 ### k8s
+
 ### spinnaker - https://www.spinnaker.io/
+
+### traffic - reverse proxy
 
 
