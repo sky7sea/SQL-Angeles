@@ -57,6 +57,8 @@ docker ps -a
 
 잘 동작한다.
 
+## 동영상 보고 따라하기
 
+https://www.youtube.com/watch?v=93B-eN42Or8&t=47s
 
 
