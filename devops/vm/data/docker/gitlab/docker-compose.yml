@@ -1,9 +1,8 @@
 ---
-#version: '3'
 web:
   image: 'gitlab/gitlab-ce:latest'
   restart: always
-  hostname: 'localhost:8080'
+  hostname: 'localhost'
   environment:
     GITLAB_OMNIBUS_CONFIG: |
       external_url 'http://localhost:8080'
