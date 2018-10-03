@@ -1,7 +1,10 @@
 # devops - 03
 
+## 윈도우 git 을 설치
+
 ## 깃허브 데이크탑 어플리케이션 설치 
 * <https://desktop.github.com> download and install 
+
 
 ## virtual box extension pack install
 
@@ -128,6 +131,9 @@ http://gitlab.xgridcolo.com/admin/users/new 에서 유저를 추가한다. 그�
 
 ## generate ssh key 
 
+
+
+
 ## add ssh key to gitlab
 
 ## git clone terminal
@@ -144,31 +150,6 @@ http://gitlab.xgridcolo.com/admin/users/new 에서 유저를 추가한다. 그�
 
 ## commit and push 
 
---------------------------
+여기까지 동영상 
 
-## git에서 브랜치 관리법
-
-
-## git flow설명 가능?
-
-
-
-## jenkins로 셋업 
-
-docker pull jenkins/jenkins:lts
-
-## build후 server에 자동으로 푸시 (msbuild ms deploy 사용)
-
-## docker
-
-### docker 기본
-
-### docker file
-
-### k8s
-
-### spinnaker - https://www.spinnaker.io/
-
-### traffic - reverse proxy
-
-
+<https://www.youtube.com/watch?v=xl-DsO2y5Vs>
