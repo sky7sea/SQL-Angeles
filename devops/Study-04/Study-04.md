@@ -8,7 +8,18 @@
 
 docker pull jenkins/jenkins:lts
 
-## build후 server에 자동으로 푸시 (msbuild ms deploy 사용)
+## build후 server에 자동으로 푸시 (msbuild ms deploy 사용) 
+
+## windows virtual box image 필요
+<https://developer.microsoft.com/en-us/windows/downloads/virtual-machines>
+또는 
+https://app.vagrantup.com/mwrock/boxes/Windows2016
+
+```
+Vagrant.configure("2") do |config|
+  config.vm.box = "mwrock/Windows2016"
+end
+```
 
 ## docker
 

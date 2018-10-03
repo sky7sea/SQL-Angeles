@@ -131,20 +131,36 @@ http://gitlab.xgridcolo.com/admin/users/new 에서 유저를 추가한다. 그�
 
 ## generate ssh key 
 
+윈도우 사용자는 git bash를 열어서 하면됩니다. 
 
+ssh-keygen
 
+엔터 
+
+엔터 
 
 ## add ssh key to gitlab
 
+cat ~/.ssh/id_rab.
+
 ## git clone terminal
+
+mkdir ~/Desktop/test
+cd ~/Desktop/test
+git clone ssh://git@localhost:30022/root/first.git 
 
 ## change code 
 
 ## git push - terminal
+```
+git add --all
+git commit -m "second commit"
+git push 
+```
 
 ## github desktop application
 
-## add local repository
+add local repository
 
 ## change code 
 
