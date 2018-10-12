@@ -9,7 +9,9 @@ docker run --name mssql -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=StrongPassw0rd'
 
 ## restore AdventureWorks2017
 
-```
+## backup 파일 다운로드 및 컨테이너에 복사 
+
+```bash
 # brew install
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -42,7 +44,14 @@ RESTORE filelistonly FROM DISK = '/var/opt/mssql/backup/AdventureWorks2017.bak'
 RESTORE DATABASE AdventureWorks2017 FROM DISK = '/var/opt/mssql/backup/AdventureWorks2017.bak' WITH MOVE 'AdventureWorks2017' TO '/var/opt/mssql/backup/AdventureWorks2017.mdf', MOVE 'AdventureWorks2017_Log' TO '/var/opt/mssql/backup/AdventureWorks2017.ldf', REPLACE
 ```
 
-### teamsql로 접속하여 디비확인한다. 
+## teamsql로 접속하여 디비확인한다. 
 
 https://teamsql.io/
 
+## docker stop and start
+
+작업이 끝낫으므로 도커를 멈추고 나중에 다시 시작하자.
+```bash
+docker stop mssql
+docker start mssql 
+```
