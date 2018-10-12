@@ -44,10 +44,6 @@ RESTORE filelistonly FROM DISK = '/var/opt/mssql/backup/AdventureWorks2017.bak'
 RESTORE DATABASE AdventureWorks2017 FROM DISK = '/var/opt/mssql/backup/AdventureWorks2017.bak' WITH MOVE 'AdventureWorks2017' TO '/var/opt/mssql/backup/AdventureWorks2017.mdf', MOVE 'AdventureWorks2017_Log' TO '/var/opt/mssql/backup/AdventureWorks2017.ldf', REPLACE
 ```
 
-## teamsql로 접속하여 디비확인한다. 
-
-https://teamsql.io/
-
 ## docker stop and start
 
 작업이 끝낫으므로 도커를 멈추고 나중에 다시 시작하자.
@@ -55,3 +51,6 @@ https://teamsql.io/
 docker stop mssql
 docker start mssql 
 ```
+
+## 클라이언트로 붙여서 연습해본다. 
+
