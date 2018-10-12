@@ -1,3 +1,8 @@
+# sql 
+
+맥유저들 mssql설치하고 디비 복구해서 데이터 넣어두기
+<https://www.youtube.com/watch?v=TklWhDehe5o>
+
 # devops 
 
 ## virtual box and vagrant 
