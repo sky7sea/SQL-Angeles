@@ -1,10 +1,9 @@
 # devops - 03
 
-## 윈도우 git 을 설치
+## 윈도우 git 을 설치 - 나중에 테스트 용도로  사용
 
 ## 깃허브 데이크탑 어플리케이션 설치 
 * <https://desktop.github.com> download and install 
-
 
 ## virtual box extension pack install
 
