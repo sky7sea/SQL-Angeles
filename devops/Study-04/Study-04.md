@@ -9,9 +9,10 @@
 ## vagrant re-install
 
 ## vagant up 
-```
+```bash
 cd /Users/ragon/Desktop/SQL-Angeles/devops/Study-04
-vagrant up 
+vagrant up
+vagrant ssh # vm으로 접속
 ```
 으로 확인
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-yum check-update
+# yum check-update
 
-#yum update
+# yum update
 
 curl -fsSL get.docker.com -o get-docker.sh
 
