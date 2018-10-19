@@ -1,5 +1,26 @@
 # study-04
 
+## virtual box re-install
+
+## virtual box plugin install
+꼭 해야함. 
+<http://download.virtualbox.org/virtualbox/5.2.18/Oracle_VM_VirtualBox_Extension_Pack-5.2.18.vbox-extpack>
+
+## vagrant re-install
+
+## vagant up 
+```
+cd /Users/ragon/Desktop/SQL-Angeles/devops/Study-04
+vagrant up 
+```
+으로 확인
+
+http://localhost:8080
+
+
+
+
+
 ## git에서 브랜치 관리법
 
 ## git flow설명 가능?

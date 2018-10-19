@@ -2,7 +2,7 @@
 
 yum check-update
 
-yum update
+#yum update
 
 curl -fsSL get.docker.com -o get-docker.sh
 
@@ -24,9 +24,7 @@ systemctl disable firewalld
 # selinux off
 sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/selinux/config
 
-cd /data/docker/gitlab
-
-docker-compose up -d
+# cd /data/docker/gitlab && docker-compose up -d
 
 
 
