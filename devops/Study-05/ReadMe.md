@@ -1,9 +1,13 @@
 
-
-
 ## git에서 브랜치 관리법
 
 ## git flow설명 가능?
+
+## 백앤드 생성 
+
+## frontend 생성 
+
+## git checkout => git commit => git push 
 
 ## jenkins로 셋업 
 
