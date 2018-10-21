@@ -4,6 +4,8 @@
 
 # yum update
 
+yum install net-tools -y
+
 curl -fsSL get.docker.com -o get-docker.sh
 
 sh get-docker.sh

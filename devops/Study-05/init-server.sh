@@ -5,7 +5,6 @@ yum check-update
 yum update
 
 curl -fsSL get.docker.com -o get-docker.sh
-
 sh get-docker.sh
 
 usermod -aG docker vagrant
@@ -21,6 +20,8 @@ systemctl disable firewalld
 
 # selinux off
 sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/selinux/config
+
+swapoff -a
 
 
 
