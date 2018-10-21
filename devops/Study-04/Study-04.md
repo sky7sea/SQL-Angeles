@@ -47,7 +47,7 @@ vagrant up --provider hyperv
 # 2번을 선택한다. 
 2
 
-# userid/ pass를 입력한다. smb에 접속하기 위해서
+# windows userid/ pass를 입력한다. 공유 폴더에 접속하기 위해서
 ```
 
 ## gitlab을 실행하자. 
