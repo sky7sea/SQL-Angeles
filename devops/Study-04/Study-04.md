@@ -44,10 +44,10 @@ vagrant up --provider hyperv
     default: 2) Default Switch
     default: 3) DockerNAT
 
-# 1번을 선택한다. 
-1 
+# 2번을 선택한다. 
+2
 
-# userid/ pass를 입력한다. (왜?) 
+# userid/ pass를 입력한다. smb에 접속하기 위해서
 ```
 
 ## gitlab을 실행하자. 

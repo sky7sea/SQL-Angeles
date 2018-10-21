@@ -2,7 +2,7 @@
 
 # yum check-update
 
-# yum update
+yum update
 
 yum install net-tools -y
 
