@@ -154,3 +154,43 @@ docker run -d -p 8080:8080 asbubam/hello-node
 curl http://localhost:8080
 
 
+
+## 실습
+
+vi hello-node.yml
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-node
+  labels:
+    service-name: hello-node
+spec:
+  containers:
+  - name: hello-node
+    image: asbubam/hello-node
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 8080
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-node
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    service-name: hello-node
+```
+
+
