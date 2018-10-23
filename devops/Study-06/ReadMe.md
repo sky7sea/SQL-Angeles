@@ -159,7 +159,8 @@ curl http://localhost:8080
 
 vi hello-node.yml
 
-```
+```yml
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -188,9 +189,88 @@ spec:
   type: LoadBalancer
   ports:
   - port: 8080
-    targetPort: 8080
+    nodePort: 8080
   selector:
     service-name: hello-node
 ```
+
+service type은 다음중 하나 고를수 있다. 
+
+* LoadBalancer
+* NodePort
+* ClusterIP
+
+```bash
+# kubectl get pods 명령으로 Pod list를 조회해보면 아직 아무것도 없다.
+$ kubectl get pods
+No resources found.
+
+# kubectl create -f {yaml 파일명} 으로 Pod을 생성한다.
+$ kubectl create -f hello-node.yml
+pod "hello-node" created
+service "hello-node" created
+
+# kubectl get pods 결과에 1개의 Pod이 생성되고 있음을 확인할 수 있다.
+$ kubectl get pods
+NAME         READY     STATUS              RESTARTS   AGE
+hello-node   0/1       ContainerCreating   0
+
+# Pod이 정상적으로 실행되면 잠시 후에 아래와 같이 STATUS가 Running으로 update된다.
+$ kubectl get pods
+NAME         READY     STATUS    RESTARTS   AGE
+hello-node   1/1       Running   0          13s
+
+$ kubectl describe pods
+
+
+# localhost:8080에 접속해서 Hello World! 가 출력됨을 확인한다.
+$ curl http://192.168.0.2:31806
+Hello World!
+```
+
+kubectl delete pods hello-node
+kubectl delete svc hello-node
+
+
+## expose 
+
+kubectl expose rc hello-rc --name=hello-svc --target-port=8080 --type=NodePort
+
+kubectl describe svc hello-svc
+
+```
+Name:                     hello-svc
+Namespace:                default
+Labels:                   app=hello-world
+Annotations:              <none>
+Selector:                 app=hello-world
+Type:                     NodePort
+IP:                       10.106.99.220
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  31295/TCP <== here
+Endpoints:                10.40.0.10:8080,10.40.0.11:8080,10.40.0.12:8080 + 7 more...
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+```
+
+curl 192.168.0.1:31295  
+
+결과값 확인됨 
+
+kubectl을  yml로 변경해보자.
+
+$ kubectl get svc
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+hello-node   LoadBalancer   10.104.128.151   <pending>     8080:30690/TCP   6h2m
+hello-svc    NodePort       10.106.99.220    <none>        8080:31295/TCP   5m57s
+
+$ kubectl delete svc hello-svc
+service "hello-svc" deleted
+
+
+
+
 
 
