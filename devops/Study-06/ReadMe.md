@@ -93,7 +93,7 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 You can now join any number of machines by running the following on each node
 as root:
 
-kubeadm join 192.168.0.1:6443 --token 3ximhj.613kplqb1qbsb60d --discovery-token-ca-cert-hash sha256:a0fd3f62b89b0e31ddc3f70f60958646df487f52f6636e127c2b4aa56c82501d
+kubeadm join 192.168.0.1:6443 --token 2ez9hl.q54j4wpkackfu6ay --discovery-token-ca-cert-hash sha256:ea44e08203949ca3ea474dd87c174c58e246c089fc2612c4545ea8aaa7f4d7e6
 
 
 ```
