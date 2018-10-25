@@ -94,8 +94,6 @@ You can now join any number of machines by running the following on each node
 as root:
 
 kubeadm join 192.168.0.1:6443 --token 2ez9hl.q54j4wpkackfu6ay --discovery-token-ca-cert-hash sha256:ea44e08203949ca3ea474dd87c174c58e246c089fc2612c4545ea8aaa7f4d7e6
-
-
 ```
 
 ### node
