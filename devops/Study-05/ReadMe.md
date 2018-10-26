@@ -70,6 +70,18 @@ git clone ssh://git@localhost:30022/root/first.git
 
 ## github desktop을 사용해보자. 
 
+git02/first 폴더를 드래그해서 githubdesktop에 놓는다. 
+
+test 파일을 지운다. 
+
+github desktop을 확인해보자.
+
+커밋하고 푸시하자. 
+
+gitlab 웹사이트에서 확인한다. 
+
+
+
 
 
 
@@ -77,7 +89,7 @@ git clone ssh://git@localhost:30022/root/first.git
 
 ### frontend 생성 
 
-## git commit => git push 
+
 
 ## jenkins로 셋업 
 
