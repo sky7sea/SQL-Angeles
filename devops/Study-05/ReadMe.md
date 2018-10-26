@@ -76,20 +76,13 @@ test 파일을 지운다.
 
 github desktop을 확인해보자.
 
-커밋하고 푸시하자. 
+커밋하고 푸시하자.
 
-gitlab 웹사이트에서 확인한다. 
-
-
-
-
-
+gitlab 웹사이트에서 확인한다.
 
 ### 백앤드 생성 
 
 ### frontend 생성 
-
-
 
 ## jenkins로 셋업 
 
