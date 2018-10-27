@@ -9,7 +9,7 @@ docker run --name mssql -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=StrongPassw0rd'
 
 ## restore AdventureWorks2017
 
-## backup 파일 다운로드 및 컨테이너에 복사 
+## backup 파일 다운로드 및 컨테이너에 복사
 
 ```bash
 # brew install
