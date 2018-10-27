@@ -86,7 +86,6 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 
 ```
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
-
 ```
 
 ```
@@ -266,6 +265,193 @@ hello-svc    NodePort       10.106.99.220    <none>        8080:31295/TCP   5m57
 
 $ kubectl delete svc hello-svc
 service "hello-svc" deleted
+
+
+## spineker
+
+halyard
+```
+mkdir ~/.hal
+chmod 777 ~/.hal
+chmod -R  777 ~/.kube
+
+
+docker run -p 8084:8084 -p 9000:9000 \
+    --name halyard --rm \
+    -v ~/.hal:/home/spinnaker/.hal \
+    -v ~/.kube:/home/spinnaker/.kube \
+    -d \
+    gcr.io/spinnaker-marketplace/halyard:stable
+```
+
+command competion
+```
+source <(hal --print-bash-completion)
+```
+
+## Choose a cloud provider
+컨테이너로 접속해서 
+```
+docker exec -it halyard bash
+```
+
+```
+hal config provider kubernetes enable
+```
+
+* host에서 
+```
+cp ~/.kube/config .hal/kubeconfig
+vi ~/.hal/config 
+
+```
+
+* 컨테이너로 접속해서 
+
+
+
+```
+hal config provider kubernetes account add my-k8s-v2-account \
+    --provider-version v2 \
+    --context $(kubectl config current-context)
+
+hal config deploy edit --type distributed --account-name my-k8s-v2-account
+
+```
+
+## minio
+https://www.minio.io/kubernetes.html 에서설정하고 generate누른다. 
+
+![minio-01.PNG](minio-01)
+
+호스트에서 
+
+vi ~/minio-deployment.yaml
+
+```yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio
+  labels:
+    app: minio
+spec:
+  clusterIP: None
+  ports:
+    - port: 9000
+      name: minio
+  selector:
+    app: minio
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: minio
+spec:
+  serviceName: minio
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+      - name: minio
+        env:
+        - name: MINIO_ACCESS_KEY
+          value: "admin"
+        - name: MINIO_SECRET_KEY
+          value: "adminsecret"
+        image: minio/minio
+        args:
+        - server
+        - http://minio-{0...3}.minio.default.svc.cluster.local/data
+        ports:
+        - containerPort: 9000
+        # These volume mounts are persistent. Each pod in the PetSet
+        # gets a volume mounted based on this field.
+        volumeMounts:
+        - name: data
+          mountPath: /data
+  # These are converted to volume claims by the controller
+  # and mounted at the paths mentioned above.
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi
+      # Uncomment and add storageClass specific to your requirements below. Read more https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class-1
+      #storageClassName:
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 9000
+      targetPort: 9000
+      protocol: TCP
+  selector:
+    app: minio
+```
+
+kubectl create -f ~/minio-deployment.yaml
+
+
+# The next two lines should be run inside the docker container only
+
+```bash
+chcon -R --reference /root/.bashrc /root/.hal/
+ls -lZa /root # Make sure the SELinux context is the same for all files/folders
+```
+
+echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT \
+    --access-key-id $MINIO_ACCESS_KEY \
+    --secret-access-key # will be read on STDIN to avoid polluting your
+                        # ~/.bash_history with a secret
+
+hal config storage edit --type s3
+
+
+# 디플로이 
+
+컨테이너로 접속해서 
+```
+docker exec -it halyard bash
+hal version list
+```
+
+```
+- 1.7.8 (Ozark):
+  Changelog: https://gist.github.com/spinnaker-release/75f98544672a4fc490d451c14688318e
+  Published: Wed Aug 29 19:09:57 UTC 2018
+  (Requires Halyard >= 1.0.0)
+- 1.8.7 (Dark):
+  Changelog: https://gist.github.com/spinnaker-release/ebb5e45e84de5b4381b422e3c8679b5a
+  Published: Fri Sep 28 17:58:52 UTC 2018
+  (Requires Halyard >= 1.0.0)
+- 1.9.5 (Bright):
+  Changelog: https://gist.github.com/spinnaker-release/d24a2c737db49dda644169cf5fe6d56e
+  Published: Mon Oct 01 17:15:37 UTC 2018
+  (Requires Halyard >= 1.0.0)
+- 1.10.1 (Maniac):
+  Changelog: https://gist.github.com/spinnaker-release/9a46f497a6e081e1ef8f12867b0ee3c6
+  Published: Wed Oct 24 17:04:36 UTC 2018
+  (Requires Halyard >= 1.11)
+```
+
+```
+hal config version edit --version 1.10.1
+hal deploy apply
+```
+
+
 
 
 
