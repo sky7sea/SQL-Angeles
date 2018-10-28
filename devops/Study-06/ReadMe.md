@@ -930,10 +930,12 @@ ls -lZa /root # Make sure the SELinux context is the same for all files/folders
 
 도커에서 
 ```bash
-
-echo adminsecret | hal config storage s3 edit --endpoint http://204.16.116.84:9001 \
+docker exec -it halyard bash
+echo adminsecret | hal config storage s3 edit \
+    --endpoint http://204.16.116.84:9001 \
     --access-key-id admin \
-    --secret-access-key # will be read on STDIN to avoid polluting your ~/.bash_history with a secret
+    --secret-access-key 
+# will be read on STDIN to avoid polluting your ~/.bash_history with a secret
 
 hal config storage edit --type s3
 ```
@@ -978,9 +980,55 @@ hal deploy apply
 
 kubectl get pods --all-namespaces | grep dashboard
 
-kubectl create -f https://rawgit.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 
-kubectl describe svc kubernetes-dashboard -n kube-system  
+To access Dashboard from your local workstation you must create a secure channel to your Kubernetes cluster. Run the following command:
+```
+$ kubectl proxy
+```
+
+kubectl -n kube-system edit service kubernetes-dashboard
+
+화면에서 yml을 수정한다. 
+
+clusterIp를 nodeport로 변경한다. 
+
+kubectl -n kube-system get service kubernetes-dashboard
+
+Dashboard has been exposed on port 31707 (HTTPS). 
+Now you can access it from your browser at: https://<master-ip>:31707.
+
+https://www.com:31707
+
+확인이 가능하다. 
+
+로그인은 token이나 kube설정으로 가능하네?
+
+kubectl get secrets
+
+NAME                  TYPE                                  DATA   AGE
+default-token-6pb8d   kubernetes.io/service-account-token   3      3h20m
+
+kubectl describe secrets default-token-6pb8d
+
+```
+Name:         default-token-6pb8d
+Namespace:    default
+Labels:       <none>
+Annotations:  kubernetes.io/service-account.name: default
+              kubernetes.io/service-account.uid: 05de009b-da2b-11e8-a5ac-0026b95e309d
+
+Type:  kubernetes.io/service-account-token
+
+Data
+====
+token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4tNnBiOGQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjA1ZGUwMDliLWRhMmItMTFlOC1hNWFjLTAwMjZiOTVlMzA5ZCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.4YPh4OG1HVxooKqMkZh8eljlbmXZAsM8bIC31_OeuattuhR4-Kt8tcKOXmYQG9Bi3H-reY6-RmWGTGIVRuQhluE0mJHdCoTju7Smgwxdh4ku9oJ_I04KZ-S9DPh8xcwO720noCOJ3WJBRiPTrRA7M_W_AeSEcgTXXgyAuH5fG6gyZvu6oG6lE192Yj9-7ddJzIzBsMndJ5MMemC3WHLsfFCY8NgUq0q9_noTSPEdzuvu3MClJWa2u0FrrlM4T_P3ggmbYCz_eX4yAyPFnhFqV6CUQvhvxQJGu9mF0iugrkKPqGpv_Oznlc0R9h0upztaZcf-lUwIi8VxpluztlwkUQ
+ca.crt:     1025 bytes
+namespace:  7 bytes
+```
+
+토큰을 복사하면 접혹이 된다.
+
 
 서비스 포트 확인
 
