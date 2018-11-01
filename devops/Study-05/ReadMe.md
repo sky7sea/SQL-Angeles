@@ -1,6 +1,5 @@
 # study 05
 
-<<<<<<< HEAD
 ## project 생성  - gitlab
 
 ## git clone => git commit => git push 
@@ -12,8 +11,6 @@
 ## git commit 
 
 ## git에서 브랜치 관리법
-=======
->>>>>>> 61cefb025dbb88add6aac62003902863f1448fc4
 
 ## git 설치 
 
@@ -82,7 +79,6 @@ git clone ssh://git@localhost:30022/root/first.git
 
 클론을 받으면 이제 추가된 파일까지 받는걸 알수 있다.
 
-<<<<<<< HEAD
 
 
 ## docker
@@ -98,7 +94,6 @@ docker registry에 추가
 이제 다른서버에서 up 
 
 
-=======
 ## github desktop을 사용해보자. 
 
 git02/first 폴더를 드래그해서 githubdesktop에 놓는다. 
@@ -114,7 +109,6 @@ gitlab 웹사이트에서 확인한다.
 ### 백앤드 생성 
 
 ### frontend 생성 
->>>>>>> 61cefb025dbb88add6aac62003902863f1448fc4
 
 ## jenkins로 셋업 
 
@@ -135,7 +129,6 @@ end
 
 ### k8s
 
-<<<<<<< HEAD
 
 
 ## install 3 vm 
@@ -185,7 +178,6 @@ kubeadm init
 
 * Node
 
-=======
 ### spinnaker - https://www.spinnaker.io/
 
 ### traffic - reverse proxy
@@ -196,7 +188,6 @@ kubeadm init
 
 
 
->>>>>>> 61cefb025dbb88add6aac62003902863f1448fc4
 
 ### spinnaker - https://www.spinnaker.io/
 
