@@ -1,4 +1,14 @@
 
+## project 생성  - gitlab
+
+## git clone => git commit => git push 
+
+## project clone 
+
+## project code add 
+
+## git commit 
+
 ## git에서 브랜치 관리법
 
 ## git flow설명 가능?
@@ -7,7 +17,21 @@
 
 ## frontend 생성 
 
-## git checkout => git commit => git push 
+
+
+## docker
+
+### docker 기본
+
+### docker file
+
+도커 이미지 빌드
+
+docker registry에 추가
+
+이제 다른서버에서 up 
+
+
 
 ## jenkins로 셋업 
 
@@ -26,23 +50,9 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-## docker
-
-### docker 기본
-
-### docker file
-
 ### k8s
 
-### spinnaker - https://www.spinnaker.io/
 
-### traffic - reverse proxy
-
-
-
-
-
-# kube
 
 ## install 3 vm 
 
@@ -92,4 +102,7 @@ kubeadm init
 * Node
 
 
+### spinnaker - https://www.spinnaker.io/
+
+### traffic - reverse proxy
 
