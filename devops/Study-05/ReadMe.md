@@ -71,6 +71,19 @@ git clone ssh://git@localhost:30022/root/first.git
 
 클론을 받으면 이제 추가된 파일까지 받는걸 알수 있다.
 
+
+## github desktop을 사용해보자. 
+
+first 폴더를 드래그해서 github desktop에 놓는다. 
+
+test 파일을 지운다. 
+
+github desktop을 확인해보자.
+
+커밋하고 푸시하자.
+
+gitlab 웹사이트에서 확인한다.
+
 ## git에서 브랜치 관리법
 
 
