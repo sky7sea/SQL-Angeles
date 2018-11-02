@@ -2,16 +2,6 @@
 
 ## project 생성  - gitlab
 
-## git clone => git commit => git push 
-
-## project clone 
-
-## project code add 
-
-## git commit 
-
-## git에서 브랜치 관리법
-
 ## git 설치 
 
 * windows - https://git-scm.com/download/win download and install 
@@ -57,7 +47,8 @@ git clone ssh://git@localhost:30022/root/first.git
 
 ## change code 
 
-add test file 
+add test file
+
 ```
 git add --all 
 git commit -m test
@@ -70,7 +61,8 @@ http://localhost:8080/root/first
 
 test가 생겻음을 확인하다.
 
-## 2번째 유저를 가정하고 해보자. 
+## 2번째 유저를 가정하고 해보자.
+
 ```
 mkdir ~/Desktop/git02
 cd ~/Desktop/git02
@@ -78,5 +70,7 @@ git clone ssh://git@localhost:30022/root/first.git
 ```
 
 클론을 받으면 이제 추가된 파일까지 받는걸 알수 있다.
+
+## git에서 브랜치 관리법
 
 
