@@ -1,18 +1,36 @@
 ## jenkins 셋업 
 
-## git clone 
+## git clone
+```
+mkdir test
+cd test 
+git clone ssh://git@204.16.116.84:30022/root/smiley.git .
+```
 
 ## restapi 생성
 ```
 dotnet new webapi
 dotnet restore 
-dotnet watch 
+dotnet watch
+dotnet run 
 ```
 
-http://localhost
-
+http://localhost/api/values
 
 ## git에 푸시
+```
+git add --all
+git commit -m "webapi added"
+git push 
+```
+
+## jenkins run 
+
+docker pull jenkins/jenkins:lts
+
+docker run -p 9000:8080 -p 50000:50000 jenkins/jenkins:lts
+
+
 
 
 docker pull jenkins/jenkins:lts
