@@ -26,6 +26,8 @@ git push
 
 ## jenkins run 
 
+mkdir /data/jenkins_home
+
 docker pull jenkins/jenkins:lts
 
 docker run -p 9000:8080 -p 50000:50000 jenkins/jenkins:lts
