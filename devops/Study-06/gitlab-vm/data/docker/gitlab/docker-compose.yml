@@ -1,0 +1,29 @@
+---
+web:
+  image: 'gitlab/gitlab-ce:latest'
+  restart: always
+  hostname: 'localhost'
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      external_url 'http://localhost'
+      # Add any other gitlab.rb configuration here, each on its own line
+      gitlab_rails['gitlab_shell_ssh_port'] = 30022
+  ports:
+    - '8080:80'
+    - '443:443'
+    - '30022:22'
+  volumes:
+    - '/srv/gitlab/config:/etc/gitlab'
+    - '/srv/gitlab/logs:/var/log/gitlab'
+    - '/srv/gitlab/data:/var/opt/gitlab'
+    
+jenkins:
+  image: 'jenkins/jenkins:lts'
+  restart: always
+  ports:
+    - '9000:8080'
+    - '50000:50000'
+  volumes:
+    - '/data/jenkins_home:var/jenkins_home'
+
+  
