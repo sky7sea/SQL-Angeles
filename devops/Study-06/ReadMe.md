@@ -1,21 +1,19 @@
+## jenkins 셋업 
 
-## github desktop을 사용해보자. 
+## git clone 
 
-git02/first 폴더를 드래그해서 githubdesktop에 놓는다. 
+## restapi 생성
+```
+dotnet new webapi
+dotnet restore 
+dotnet watch 
+```
 
-test 파일을 지운다. 
+http://localhost
 
-github desktop을 확인해보자.
 
-커밋하고 푸시하자.
+## git에 푸시
 
-gitlab 웹사이트에서 확인한다.
-
-### 백앤드 생성 
-
-### frontend 생성 
-
-## jenkins로 셋업 
 
 docker pull jenkins/jenkins:lts
 
@@ -32,72 +30,6 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-### k8s
-
-
-
-## install 3 vm 
-
-master node01 node02
-
-vagrant up 
-
-## install kube 
-
-* Master
-
-
-
-```bash
-sudo bash
-modprobe br_netfilter
-echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
-echo '1' > /proc/sys/net/ipv4/ip_forward
-swapoff -a
-
-cat <<EOF > /etc/yum.repos.d/kubernetes.repo
-[kubernetes]
-name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-enabled=1
-gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-EOF
-yum install -y kubectl
-systemctl enable kubelet.service
-systemctl start kubelet.service
-exit
-```
-
-확인 
-
-kubectl version
-
-* init 
-
-```
-sudo yum install kubeadm  -y
-kubeadm init
-```
-
-* Node
-
-### spinnaker - https://www.spinnaker.io/
-
-### traffic - reverse proxy
-
-## git에서 브랜치 관리법
-
-## git flow설명 가능?
-
-
-
-
-### spinnaker - https://www.spinnaker.io/
-
-### traffic - reverse proxy
-
 
 
 ## docker
@@ -111,3 +43,9 @@ kubeadm init
 docker registry에 추가
 
 이제 다른서버에서 up 
+
+
+
+
+
+
