@@ -24,6 +24,16 @@ git commit -m "webapi added"
 git push 
 ```
 
+## gitlab token 생성
+
+gitlab http://204.16.116.84:8080/profile
+
+access token http://204.16.116.84:8080/profile/personal_access_tokens
+
+이름 주고 권한 주고 create personal token 
+
+이름과 token을 복사해둔다. 
+
 ## jenkins run
 
 ```bash
@@ -31,33 +41,32 @@ mkdir /data/jenkins_home
 docker pull jenkins/jenkins:lts
 docker run -p 9000:8080 -p 50000:50000 jenkins/jenkins:lts -d
 
-docker-compose up -d
+vagrant ssh >> docker exec -it jenkins bash 
+
 cat /var/jenkins_home/secrets/initialAdminPassword
 ```
+
 http://localhost:9000
 
 password 
 
-suggest plugin 
+plugin 선택후 로그인
 
-add user
+manage jenkins >> config system >> Gitlab >>
 
-login 
+connection name : test
+
+gitlab host url : http://204.16.116.84:8080
+
+add credential : 
+>> domain  global
+kind : gitlab api token 
+
 
 create project  AAA
 
-git pull 
-
-add credential  => git / sshkey
-
-vagrant ssh >> docker exec -it jenkins bash >> cat ~/.ssh/id_rsa.pub
-
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDyoXRfaYg7jYDyvBb131uHnaSndWDeRmncDkiuqizS2VumelQsM76PJ8iKbAX6/7fHbHcruOSObIByQjYnWBg1+8ifcx+8eiRKPCDZEl1Th28PLGNFK1EmTbP6en/Z2YYQ86zr2ZOGFZDthFaJOc9HpbTuT06A/ZDOPkHqnbpg6sVw8cdfgAeRvzxbeMEPPmWcedUpzCoAubzuSXiXvXpaNC0N12rqgCxaJKpC345hUjt4NR5shj77NZjXW+cLKKLbLZU7kmuqVJiwqsTL2UelnCAm0pd2D8CDMbCurUzwZeDengGaFic3hWamvmMP4kb79HZIZwsmWWxEHznZanzn jenkins@24f26c6f2108
 
 
-docker exec -it jenkins bash
-
-```
 
 
 ## build후 server에 자동으로 푸시 (msbuild ms deploy 사용) 
