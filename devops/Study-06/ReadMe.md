@@ -98,6 +98,43 @@ docker registry에 추가
 
 
 
+# 2nd try 
+
+docker-compose up -d
+
+### gitlab
+gitlab setup / password
+
+login 후 pernal api key 생성  >> user>> setting >> access token 
+
+http://localhost:8080/profile/personal_access_tokens
+
+name key를 복사해두면됨. 
+
+test/fGsH297smbQsZz6YE-sH
+
+create project : test 
+
+
+### jenkins
+docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+키를 복사해두고 
+
+http://localhost:9000/ 접속해서 복사해둔 키를 넣고 설치 진행
+
+credential >> system >> global 
+
+manage jenkins >> configure system >> 
+
+create new project 
+
+freestyle 
+
+
+
+
+
 
 
 
