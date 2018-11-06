@@ -1,10 +1,26 @@
-## jenkins 셋업 
+# gitlab & jenkins 연동
 
-## git clone
+## gitlab & jenkins docker up 
+
 ```
-mkdir test
-cd test 
-git clone ssh://git@204.16.116.84:30022/root/smiley.git .
+cd Study-06/gitlab-jenkins-vm
+vagrant up
+vagrant ssh 
+cd /data/docker
+docker-compose up -d
+```
+
+## gitlab 초기 설정 
+앞 강의 참고하여 초기 설정을 한다. 유저도 만들고 프로젝트도 만든다. 
+
+create project : test 
+
+
+## git clone ( on host )
+```
+mkdir Desktop/test
+cd Desktop/test 
+git clone ssh://git@204.16.116.84:30022/root/smiley.git . 
 ```
 
 ## restapi 생성
@@ -15,7 +31,13 @@ dotnet watch
 dotnet run 
 ```
 
-http://localhost/api/values
+http://localhost:5000/api/values 
+
+or 
+
+https://localhost:5001/api/values
+
+값 확인 
 
 ## git에 푸시
 ```
@@ -24,46 +46,67 @@ git commit -m "webapi added"
 git push 
 ```
 
-## gitlab token 생성
 
-gitlab http://204.16.116.84:8080/profile
-
-access token http://204.16.116.84:8080/profile/personal_access_tokens
-
-이름 주고 권한 주고 create personal token 
-
-이름과 token을 복사해둔다. 
-
-## jenkins run
-
+## jenkins 초기 설정 
+가상 머신으로 접속한후 
 ```bash
-mkdir /data/jenkins_home
-docker pull jenkins/jenkins:lts
-docker run -p 9000:8080 -p 50000:50000 jenkins/jenkins:lts -d
-
-vagrant ssh >> docker exec -it jenkins bash 
-
-cat /var/jenkins_home/secrets/initialAdminPassword
+vagrant ssh 
+docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword 
 ```
+나온 값을 저장해둔다. 
 
 http://localhost:9000
 
-password 
+복사해둔 값을 넣고 설치를 진행한다. suggested plugin으로 설치하면 된다.
 
-plugin 선택후 로그인
+## jenkins ssh-key 생성 
 
-manage jenkins >> config system >> Gitlab >>
+docker exec -it jenkins ssh-keygen
 
-connection name : test
+엔터 엔터 엔터 
 
-gitlab host url : http://204.16.116.84:8080
+docker exec -it jenkins cat /var/jenkins_home/.ssh/id_rsa.pub
 
-add credential : 
->> domain  global
-kind : gitlab api token 
+나온 값을 복사해둔다. 
+
+## gitlab에 project에 deploy key 생성 
+
+left menu >> setting >> repository >> deploy key >> expend 
+
+위에서 복사해둔 값을 넣는다. 
+
+## jenkins 프로젝트 생성 
+프로젝트 생성 전에 gitlab의 내부 아이피를 알아야한다. 
+```
+docker inspect gitlab
+> "Gateway": "172.18.0.1",
+> "IPAddress": "172.18.0.2",
+```
+아이피를 젠킨스에서 설정해야한다.
+
+ssh키 known host 추가 
+
+docker exec -it jenkins ssh 172.18.0.2
 
 
-create project  AAA
+
+create new project 
+
+freestyle 
+
+source >> git >> ssh://git@172.18.0.2/root/test.git
+
+save 
+
+build 
+
+
+
+
+
+
+
+
 
 
 
@@ -98,38 +141,9 @@ docker registry에 추가
 
 
 
-# 2nd try 
-
-docker-compose up -d
-
-### gitlab
-gitlab setup / password
-
-login 후 pernal api key 생성  >> user>> setting >> access token 
-
-http://localhost:8080/profile/personal_access_tokens
-
-name key를 복사해두면됨. 
-
-test/fGsH297smbQsZz6YE-sH
-
-create project : test 
 
 
-### jenkins
-docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
-키를 복사해두고 
-
-http://localhost:9000/ 접속해서 복사해둔 키를 넣고 설치 진행
-
-credential >> system >> global 
-
-manage jenkins >> configure system >> 
-
-create new project 
-
-freestyle 
 
 
 
