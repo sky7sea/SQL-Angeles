@@ -78,7 +78,7 @@ docker exec -it jenkins cat /var/jenkins_home/.ssh/id_rsa.pub
 
 ## gitlab에 project에 deploy key 생성 
 
-left menu >> setting >> repository >> deploy key >> expend 
+left menu >> setting >> repository >> deploy key >> expend
 
 위에서 복사해둔 값을 넣는다. 
 
@@ -86,14 +86,14 @@ left menu >> setting >> repository >> deploy key >> expend
 프로젝트 생성 전에 gitlab의 내부 아이피를 알아야한다. 
 ```
 docker inspect gitlab
-> "Gateway": "172.18.0.1",
-> "IPAddress": "172.18.0.3",
+> "Gateway": "172.19.0.1",
+> "IPAddress": "172.19.0.3",
 ```
 아이피를 젠킨스에서 설정해야한다.
 
 ssh키 known host 추가 
 ```
-docker exec -it jenkins ssh 172.18.0.3 
+docker exec -it jenkins ssh 172.19.0.3 
 > yes
 ```
 create new project 
@@ -108,14 +108,58 @@ workspace 에서 코드들이 보이면 성공
 
 깃랩에서 코드를 가져오는건 성공 
 
-## 빌드해보자. 
+## jenkins web hook
+
+젠킨스에 gitlab 플러그인 설치 
+
+프로젝트에 configure 페이지 에서 아래 체크박스를 켠다.
+```
+Build when a change is pushed to GitLab. GitLab webhook URL: http://localhost:9000/project/test dl
+```
+
+Advence button click >> Secret token >> generate 
+
+생성된 키를 복사한다.
+
+## gitlab webhook trigger 
+
+admin >> setting >> network >> Outbound requests
+
+http://localhost:8080/admin/application_settings/network
+
+turn on Allow requests to the local network from hooks and services
+
+project >> setting >> integration >> http://jenkins:8080/project/test
+
+위에 url을 붙여 넣는다.
+
+security key를 붙여 넣는다. 
+
+저장 
 
 
+커밋하면 자동으로 젠킨스가 실행된다.
+
+## docker build 
+
+기본 패키지에 dotnet core가 포함되있지 않다. 
+
+젠킨스 이미지를 가져와서 추가해보자. 
 
 
+```
+vagrant ssh 
+docker exec -it jenkins bash
 
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
+sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+wget -q https://packages.microsoft.com/config/debian/9/prod.list
+sudo mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+```
 
-
+docker run -p 8081:8080 -p 50001:50001 jenkins/jenkins:lts-alpine
 
 
 
