@@ -24,18 +24,41 @@ git commit -m "webapi added"
 git push 
 ```
 
-## jenkins run 
+## jenkins run
 
+```bash
 mkdir /data/jenkins_home
-
 docker pull jenkins/jenkins:lts
+docker run -p 9000:8080 -p 50000:50000 jenkins/jenkins:lts -d
 
-docker run -p 9000:8080 -p 50000:50000 jenkins/jenkins:lts
+docker-compose up -d
+cat /var/jenkins_home/secrets/initialAdminPassword
+```
+http://localhost:9000
+
+password 
+
+suggest plugin 
+
+add user
+
+login 
+
+create project  AAA
+
+git pull 
+
+add credential  => git / sshkey
+
+vagrant ssh >> docker exec -it jenkins bash >> cat ~/.ssh/id_rsa.pub
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDyoXRfaYg7jYDyvBb131uHnaSndWDeRmncDkiuqizS2VumelQsM76PJ8iKbAX6/7fHbHcruOSObIByQjYnWBg1+8ifcx+8eiRKPCDZEl1Th28PLGNFK1EmTbP6en/Z2YYQ86zr2ZOGFZDthFaJOc9HpbTuT06A/ZDOPkHqnbpg6sVw8cdfgAeRvzxbeMEPPmWcedUpzCoAubzuSXiXvXpaNC0N12rqgCxaJKpC345hUjt4NR5shj77NZjXW+cLKKLbLZU7kmuqVJiwqsTL2UelnCAm0pd2D8CDMbCurUzwZeDengGaFic3hWamvmMP4kb79HZIZwsmWWxEHznZanzn jenkins@24f26c6f2108
 
 
+docker exec -it jenkins bash
 
+```
 
-docker pull jenkins/jenkins:lts
 
 ## build후 server에 자동으로 푸시 (msbuild ms deploy 사용) 
 
