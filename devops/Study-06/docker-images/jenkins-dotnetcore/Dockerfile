@@ -17,6 +17,4 @@ RUN apt-get install dotnet-sdk-2.1.202 -y
 # drop back to the regular jenkins user - good practice
 USER jenkins
 
-
-
 # docker build . -t jenkins-dotnetcore
