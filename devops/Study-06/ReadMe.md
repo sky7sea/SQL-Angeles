@@ -198,6 +198,29 @@ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
 |–link|컨테이너 연결 [컨테이너명:별칭]|
 
 docker run --rm -it ubuntu:16.04 /bin/bash
+docker run -d -p 1234:6379 redis
+
+docker run -d -p 3306:3306 \
+  -e MYSQL_ALLOW_EMPTY_PASSWORD=true \
+  --name mysql \
+  mysql:5.7
+
+mysql -h127.0.0.1 -uroot
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> quit
+
+
 
 # in container
 $ cat /etc/issue
@@ -207,15 +230,110 @@ $ ls
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr
 
+```
+docker ps -a 
+```
+
+```
+docker stop [OPTIONS] CONTAINER [CONTAINER...]
+```
+
+```
+docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+docker rm -v $(docker ps -a -q -f)
+
+```
+
+이미지 다운로드하기 (pull)
+```
+docker pull ubuntu:14.04
+docker pull centos:5.11
+```
+
+이미지 삭제하기 (rmi)
+```
+docker images 
+docker rmi [OPTIONS] IMAGE [IMAGE...]
+```
+
+로그보기 
+```
+docker logs ${WORDPRESS_CONTAINER_ID}
+docker logs -f aaa
+```
+
+실행하고 있는 도커에 접속하기 
+```
+docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+docker exec -it mysql /bin/bash
+```
+
+### Docker Compose
+wordpress 설치 
+
+```yml
+version: '2'
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: wordpress
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: wordpress
+
+   wordpress:
+     depends_on:
+       - db
+     image: wordpress:latest
+     volumes:
+       - wp_data:/var/www/html
+     ports:
+       - "8000:80"
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_PASSWORD: wordpress
+volumes:
+    db_data:
+    wp_data:
+```
+
 
 ### docker file
 
 도커 이미지 빌드
 
-docker registry에 추가
+docker pull jenkins/jenkins
 
-이제 다른서버에서 up 
+https://github.com/jenkinsci/docker/blob/master/README.md
 
+https://github.com/jenkinsci/docker/blob/master/Dockerfile
+
+https://github.com/jenkinsci/docker/blob/master/Dockerfile-alpine
+
+
+### docker registry에 추가
+https://hub.docker.com/_/registry/
+
+```
+docker run -d -p 5000:5000 --name registry registry:2
+
+docker pull ubuntu
+
+docker image tag ubuntu localhost:5000/myfirstimage
+
+docker push localhost:5000/myfirstimage
+```
+### 이제 다른서버에서 up 
+```
+docker pull localhost:5000/myfirstimage
+```
 
 
 
